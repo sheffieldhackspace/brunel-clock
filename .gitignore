@@ -1,3 +1,6 @@
+# CLion
+.idea
+
 # PlatformIO
 .pio
 
@@ -7,44 +10,49 @@
 # VIM
 *.swp
 
-# Prerequisites
-*.d
+# KiCAD
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# Temporary files
+*.000
+*.bak
+*.bck
+*.kicad_pcb-bak
+*.kicad_sch-bak
+*-backups
+*-cache*
+*-bak
+*-bak*
+*~
+~*
+_autosave-*
+\#auto_saved_files\#
+*.tmp
+*-save.pro
+*-save.kicad_pcb
+fp-info-cache
+~*.lck
+\#auto_saved_files#
 
-# Precompiled Headers
-*.gch
-*.pch
+# Netlist files (exported from Eeschema)
+*.net
 
-# Linker files
-*.ilk
+# Autorouter files (exported from Pcbnew)
+*.dsn
+*.ses
 
-# Debugger Files
-*.pdb
+# Exported BOM files
+*.xml
+*.csv
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+# Archived Backups (KiCad 6.0)
+**/*-backups/*.zip
 
-# Fortran module files
-*.mod
-*.smod
+# Local project settings
+*.kicad_prl
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+# Output files
+target
 
-# Executables
-*.exe
-*.out
-*.app
+# Credentials
+src/Credentials.h
 
-# debug information files
-*.dwo

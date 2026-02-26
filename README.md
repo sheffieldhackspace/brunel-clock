@@ -18,6 +18,10 @@ An Adafruit GFX compatible driver for the AEGMIS GV60 train station dot matrix d
 
 See the [KiCad project](./kicad) for the full schematic.
 
+### PCB Design
+
+![Screenshot of a PCB design from KiCAD](images/pcb.png)
+
 ### Prototype
 
 ![Photo of the prototyped circuit board](images/proto.jpeg)
