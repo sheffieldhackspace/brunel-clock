@@ -18,6 +18,7 @@
         }
     ],
     "dependencies": {
+        "adafruit/Adafruit BusIO": "^1.14.0",
         "adafruit/Adafruit GFX Library": "^1.12.4"
     },
     "license": "MIT",

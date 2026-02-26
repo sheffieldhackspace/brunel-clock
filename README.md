@@ -18,12 +18,14 @@ Add the following to your `platformio.ini`:
 
 ```ini
 lib_deps =
+    adafruit/Adafruit BusIO
     adafruit/Adafruit GFX Library
-    # link to this repository
+    https://github.com/sheffieldhackspace/AEGMIS_GV60
 ```
 
 ## Dependencies
 
+* [Adafruit BusIO](https://github.com/adafruit/Adafruit_BusIO)
 * [Adafruit GFX Library](https://github.com/adafruit/Adafruit-GFX-Library)
 * ESP32 with FreeRTOS (required for the keepalive task)
 
@@ -51,6 +53,21 @@ void loop() {
 ```
 
 Since `AEGMIS_GV60` inherits from `GFXcanvas1`, the full [Adafruit GFX API](https://learn.adafruit.com/adafruit-gfx-graphics-library) is available for drawing text, shapes, and bitmaps. Call `display.display()` to flush the canvas to the hardware.
+
+## Examples
+
+Three examples are included in the `examples/` directory. To build and flash them, clone the repository and run:
+
+```bash
+# Show a hardware test pattern
+pio run -t upload -e test
+
+# Show a checkerboard pattern
+pio run -t upload -e checkerboard
+
+# Scroll two lines of text around the display
+pio run -t upload -e movingwords
+```
 
 ## Acknowledgements
 
