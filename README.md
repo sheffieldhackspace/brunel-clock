@@ -2,6 +2,10 @@
 
 An Adafruit GFX compatible driver for the AEGMIS GV60 train station dot matrix display.
 
+![Gif of "Sheffield Hackspace" moving around train clock sign](images/train-sign.gif)
+
+![Picture of train clock sign](images/train-sign.png)
+
 ## Hardware
 
 * Display dimensions: 96 × 26
@@ -10,7 +14,13 @@ An Adafruit GFX compatible driver for the AEGMIS GV60 train station dot matrix d
 
 ### Schematic
 
+![Screenshot of a schematic presenting the pinout](images/schema.png)
+
 See the [KiCad project](./kicad) for the full schematic.
+
+### Prototype
+
+![Photo of the prototyped circuit board](images/proto.jpeg)
 
 ## Installation
 
