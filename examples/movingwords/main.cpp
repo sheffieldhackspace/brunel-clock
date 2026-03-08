@@ -3,8 +3,8 @@
  * Scroll two lines of text around on the display.
 */
 
-#include <AEGMIS_GV60.h>
 #include <Arduino.h>
+#include <BrunelClock.h>
 
 #define MAX_X_DEVIATION 36
 #define MAX_Y_DEVIATION 9
@@ -15,9 +15,9 @@ int reverse = 0;
 uint8_t scrolly = 0;
 int reversey = 0;
 
-AEGMIS_GV60_SPI spi1(D1, D3, D5, D8);
-AEGMIS_GV60_SPI spi2(D0, D2, D4, D7);
-AEGMIS_GV60 display(&spi1, &spi2);
+BrunelClockSPI spi1(D1, D3, D5, D8);
+BrunelClockSPI spi2(D0, D2, D4, D7);
+BrunelClock display(&spi1, &spi2);
 
 void setup() {
   display.begin();

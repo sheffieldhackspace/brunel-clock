@@ -1,11 +1,11 @@
 {
-    "name": "AEGMIS_GV60",
+    "name": "display-infotec-brunel-clock",
     "version": "1.0.0",
-    "description": "Adafruit GFX compatible driver for the AEGMIS GV60 train station dot matrix display",
+    "description": "An Adafruit GFX compatible driver for the Infotec brunel clock GV60-based dot matrix display.",
     "keywords": ["display", "dot matrix", "train", "adafruit gfx"],
     "repository": {
         "type": "git",
-        "url": "https://github.com/sheffieldhackspace/AEGMIS_GV60"
+        "url": "https://github.com/sheffieldhackspace/display-infotec-brunel-clock"
     },
     "authors": [
         {

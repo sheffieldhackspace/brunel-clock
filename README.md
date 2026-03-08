@@ -1,6 +1,6 @@
-# AEGMIS_GV60
+# display-infotec-brunel-clock
 
-An Adafruit GFX compatible driver for the AEGMIS GV60 train station dot matrix display.
+An Adafruit GFX compatible driver for the Infotec brunel clock GV60-based dot matrix display.
 
 ![Gif of "Sheffield Hackspace" moving around train clock sign](images/train-sign.gif)
 
@@ -34,7 +34,7 @@ Add the following to your `platformio.ini`:
 lib_deps =
     adafruit/Adafruit BusIO
     adafruit/Adafruit GFX Library
-    https://github.com/sheffieldhackspace/AEGMIS_GV60
+    https://github.com/sheffieldhackspace/display-infotec-brunel-clock
 ```
 
 ## Dependencies
@@ -46,11 +46,11 @@ lib_deps =
 ## Usage
 
 ```cpp
-#include <AEGMIS_GV60.h>
+#include <BrunelClock.h>
 
-AEGMIS_GV60_SPI spi1(D1, D3, D5, D8);
-AEGMIS_GV60_SPI spi2(D0, D2, D4, D7);
-AEGMIS_GV60 display(&spi1, &spi2);
+BrunelClockSPI spi1(D1, D3, D5, D8);
+BrunelClockSPI spi2(D0, D2, D4, D7);
+BrunelClock display(&spi1, &spi2);
 
 void setup() {
     display.begin();
@@ -66,7 +66,7 @@ void loop() {
 }
 ```
 
-Since `AEGMIS_GV60` inherits from `GFXcanvas1`, the full [Adafruit GFX API](https://learn.adafruit.com/adafruit-gfx-graphics-library) is available for drawing text, shapes, and bitmaps. Call `display.display()` to flush the canvas to the hardware.
+Since `BrunelClock` inherits from `GFXcanvas1`, the full [Adafruit GFX API](https://learn.adafruit.com/adafruit-gfx-graphics-library) is available for drawing text, shapes, and bitmaps. Call `display.display()` to flush the canvas to the hardware.
 
 ## Examples
 

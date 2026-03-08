@@ -22,24 +22,43 @@
  * SOFTWARE.
  */
 
-#pragma once
+#include "BrunelClockSPI.h"
 
+BrunelClockSPI::BrunelClockSPI(int8_t sck, int8_t mosi, int8_t latch, int8_t keepalive)
+  : Adafruit_SPIDevice(-1, sck, -1, mosi, SPI_CLOCK_DIV2, SPI_BITORDER_MSBFIRST, SPI_MODE1),
+    _keepalive(keepalive),
+    _latch(latch),
+    _buffer(0),
+    _buffer_size(0) {}
 
-#include <Adafruit_SPIDevice.h>
+bool BrunelClockSPI::begin() {
+  if (_latch != -1) {
+    pinMode(_latch, OUTPUT);
+  }
 
-class AEGMIS_GV60_SPI : public Adafruit_SPIDevice {
-public:
-  AEGMIS_GV60_SPI(int8_t sck, int8_t mosi, int8_t latch, int8_t keepalive);
-  bool begin();
-  void transfer(bool b);
-  void setKeepalive(bool b);
-  void setLatch(bool b);
+  if (_keepalive != -1) {
+    pinMode(_keepalive, OUTPUT);
+  }
 
-private:
-  int8_t _keepalive;
-  int8_t _latch;
+  return Adafruit_SPIDevice::begin();
+}
 
-  byte _buffer;
-  int8_t _buffer_size;
-};
+void BrunelClockSPI::transfer(bool bit) {
+  _buffer <<= 1;
+  _buffer |= bit;
+  _buffer_size++;
 
+  if (_buffer_size >= 8) {
+    Adafruit_SPIDevice::transfer(_buffer);
+    _buffer = 0;
+    _buffer_size = 0;
+  }
+}
+
+void BrunelClockSPI::setLatch(bool b) {
+  digitalWrite(_latch, b);
+}
+
+void BrunelClockSPI::setKeepalive(bool b) {
+  digitalWrite(_keepalive, b);
+}

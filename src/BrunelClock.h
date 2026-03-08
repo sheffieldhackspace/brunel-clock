@@ -27,19 +27,19 @@
 
 #include <Adafruit_GFX.h>
 
-#include "AEGMIS_GV60_SPI.h"
+#include "BrunelClockSPI.h"
 
-#define BC_WIDTH (uint16_t) 96
-#define BC_HEIGHT (uint16_t) 26
+constexpr const uint16_t DISPLAY_WIDTH = 96;
+constexpr const uint16_t DISPLAY_HEIGHT = 26;
 
 enum BOARD {
   BOARD_BOTTOM = 0,
   BOARD_TOP = 1,
 };
 
-class AEGMIS_GV60 : public GFXcanvas1 {
+class BrunelClock : public GFXcanvas1 {
 public:
-  AEGMIS_GV60(AEGMIS_GV60_SPI *spi0, AEGMIS_GV60_SPI *spi1);
+  BrunelClock(BrunelClockSPI *spi0, BrunelClockSPI *spi1);
   void begin();
   void display();
   uint8_t getPixel(int16_t x, int16_t y);
@@ -52,6 +52,6 @@ private:
   void displaySegment(BOARD board, uint8_t segment, bool even_row);
 
   bool _invert;
-  AEGMIS_GV60_SPI *_spi[2];
+  BrunelClockSPI *_spi[2];
 };
 

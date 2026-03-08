@@ -22,24 +22,24 @@
  * SOFTWARE.
  */
 
-#include "AEGMIS_GV60.h"
+#include "BrunelClock.h"
 
-AEGMIS_GV60::AEGMIS_GV60(AEGMIS_GV60_SPI *spi0, AEGMIS_GV60_SPI *spi1)
-  : GFXcanvas1(BC_WIDTH, BC_HEIGHT), _invert(false), _spi{spi0, spi1} {}
+BrunelClock::BrunelClock(BrunelClockSPI *spi0, BrunelClockSPI *spi1)
+  : GFXcanvas1(DISPLAY_WIDTH, DISPLAY_HEIGHT), _invert(false), _spi{spi0, spi1} {}
 
-void AEGMIS_GV60::begin() {
+void BrunelClock::begin() {
   _spi[BOARD_TOP]->begin();
   _spi[BOARD_BOTTOM]->begin();
 
   xTaskCreate(keepaliveCallback, "keepalive", 4096, (void *) _spi, 2, NULL);
 }
 
-void AEGMIS_GV60::display() {
+void BrunelClock::display() {
   displayBoard(BOARD_TOP);
   displayBoard(BOARD_BOTTOM);
 }
 
-void AEGMIS_GV60::displayBoard(BOARD board) {
+void BrunelClock::displayBoard(BOARD board) {
   _spi[board]->setLatch(HIGH);
 
   for (uint8_t n = 0; n < 16; n++) {
@@ -56,7 +56,7 @@ void AEGMIS_GV60::displayBoard(BOARD board) {
   _spi[board]->setLatch(LOW);
 }
 
-void AEGMIS_GV60::displaySegment(BOARD board, uint8_t segment, bool even_row) {
+void BrunelClock::displaySegment(BOARD board, uint8_t segment, bool even_row) {
   // Odd segments start in the first column and second row of the current segment
   // Even segments start in the last column and last row of the previous segment
   bool even_segment = segment % 2;
@@ -121,16 +121,16 @@ void AEGMIS_GV60::displaySegment(BOARD board, uint8_t segment, bool even_row) {
   _spi[board]->transfer(false);
 }
 
-uint8_t AEGMIS_GV60::getPixel(int16_t x, int16_t y) {
+uint8_t BrunelClock::getPixel(int16_t x, int16_t y) {
   return GFXcanvas1::getPixel(x, y) ^ _invert;
 }
 
-void AEGMIS_GV60::invertDisplay(bool invert) {
+void BrunelClock::invertDisplay(bool invert) {
   _invert = invert;
 }
 
-[[noreturn]] void AEGMIS_GV60::keepaliveCallback(void *arg) {
-  auto **spi = static_cast<AEGMIS_GV60_SPI **>(arg);
+[[noreturn]] void BrunelClock::keepaliveCallback(void *arg) {
+  auto **spi = static_cast<BrunelClockSPI **>(arg);
 
   while (true) {
     spi[BOARD_TOP]->setKeepalive(HIGH);
