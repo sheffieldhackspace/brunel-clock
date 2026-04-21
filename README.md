@@ -2,9 +2,7 @@
 
 An Adafruit GFX compatible driver for the Infotec brunel clock GV60-based dot matrix display.
 
-![Gif of "Sheffield Hackspace" moving around train clock sign](images/train-sign.gif)
-
-![Picture of train clock sign](images/train-sign.png)
+![Picture of the brunel clock in the Hackspace](images/brunel-clock.jpeg)
 
 ## Hardware
 
